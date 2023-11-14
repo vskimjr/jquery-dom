@@ -83,13 +83,15 @@
 
     // why doesn't $("article:last-child").empty(); work?
 
-    $("h1").css("font-size", Math.floor(Math.random() * (100 + 1)));
+    $("#title").css("font-size", Math.floor(Math.random() * (100 + 1))); // use id instead of h1
 
-    let $ol = $("ol");
+    // let $ol = $("ol");
 
-    let $CarlAndVictorLi = $("<li>Carl and Victor</li>");
+    // let $CarlAndVictorLi = $("<li>Carl and Victor</li>");
 
-    $ol.append($CarlAndVictorLi);
+    // $ol.append($CarlAndVictorLi);
+
+    $("ol").append($("<li>Carl and Victor</li>")); // write out all things separately and then smash em together
 
     // why can't we directly append without creating variables
 
@@ -121,7 +123,10 @@
     function removeImg(evt) {
       const targetImg = evt.target;
       targetImg.remove();
+      // $("img").remove();
     }
+
+    // .eq look this up in api.jquery.com
 
   </script>
 </body>
