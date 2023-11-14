@@ -76,7 +76,9 @@
     crossorigin="anonymous"></script>
 
   <script>
+
     $("article > img").addClass("image-center");
+
     $("article > p").last().empty();
 
     // why doesn't $("article:last-child").empty(); work?
@@ -85,44 +87,40 @@
 
     let $ol = $("ol");
 
-    let $CarlAndVictorLi = $("<li>Carl and Victor</li>")
+    let $CarlAndVictorLi = $("<li>Carl and Victor</li>");
 
-    $ol.append($CarlAndVictorLi)
+    $ol.append($CarlAndVictorLi);
 
     $("aside").empty().text("My bad, this list shouldn't have existed");
 
     $(".row").on("change", changeBackgoundColor)
 
+  /** changeBackgroundColor() gets number values from the input type number and
+   * changes the background color correponding with the rgb numbers of the input type numbers
+   */
 
-    console.log($(".row mb-5"));
-
-    function changeBackgoundColor(evt) {
-      // evt.preventDefault();
-
-      // const [color1, color2, color3] = $("input").val();
-
-      // debugger;
+    function changeBackgoundColor() {
 
       const colorsArr = [];
 
       const colors = document.querySelectorAll("input");
+
+      // ask about 103
+
       for (let color of colors) {
         colorsArr.push(Number(color.value));
       }
 
-      console.log(colorsArr);
-
-      // console.log(color1, color2, color3);
-      // $("body").css("background-color", color)
-
-      // $("body").css("background-color", "red");
-
       $("body").css("background", `rgb(${colorsArr[0]}, ${colorsArr[1]}, ${colorsArr[2]}`);
     }
 
+    $("img").on("click", removeImg);
 
-
-
+    /** removeImg() removes the image
+    */
+    function removeImg(){
+      $("img").remove();
+    }
 
   </script>
 </body>
