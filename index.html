@@ -91,7 +91,34 @@
 
     $("aside").empty().text("My bad, this list shouldn't have existed");
 
+    $(".row").on("change", changeBackgoundColor)
 
+
+    console.log($(".row mb-5"));
+
+    function changeBackgoundColor(evt) {
+      // evt.preventDefault();
+
+      // const [color1, color2, color3] = $("input").val();
+
+      // debugger;
+
+      const colorsArr = [];
+
+      const colors = document.querySelectorAll("input");
+      for (let color of colors) {
+        colorsArr.push(Number(color.value));
+      }
+
+      console.log(colorsArr);
+
+      // console.log(color1, color2, color3);
+      // $("body").css("background-color", color)
+
+      // $("body").css("background-color", "red");
+
+      $("body").css("background", `rgb(${colorsArr[0]}, ${colorsArr[1]}, ${colorsArr[2]}`);
+    }
 
 
 
