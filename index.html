@@ -77,13 +77,13 @@
 
   <script>
 
-    $("article > img").addClass("image-center");
+    $("article img").addClass("image-center"); // just a space is a descendant selector. > is direct child
 
-    $("article > p").last().empty();
+    $("article p").last().empty();
 
     // why doesn't $("article:last-child").empty(); work?
 
-    $("h1").css("font-size", Math.floor(Math.random() * (100 - 0 + 1)));
+    $("h1").css("font-size", Math.floor(Math.random() * (100 + 1)));
 
     let $ol = $("ol");
 
@@ -91,35 +91,36 @@
 
     $ol.append($CarlAndVictorLi);
 
+    // why can't we directly append without creating variables
+
     $("aside").empty().text("My bad, this list shouldn't have existed");
 
-    $(".row").on("change", changeBackgoundColor)
+    $(".row").on("change", changeBackgoundColor);
 
-  /** changeBackgroundColor() gets number values from the input type number and
-   * changes the background color correponding with the rgb numbers of the input type numbers
-   */
+    /** changeBackgroundColor() gets number values from the input type number and
+     * changes the background color correponding with the rgb numbers of the input type numbers
+     */
 
     function changeBackgoundColor() {
 
-      const colorsArr = [];
+      const colors = [];
 
-      const colors = document.querySelectorAll("input");
+      const colorVals = $("input");
 
-      // ask about 103
-
-      for (let color of colors) {
-        colorsArr.push(Number(color.value));
+      for (let color of colorVals) {
+        colors.push(Number(color.value));
       }
 
-      $("body").css("background", `rgb(${colorsArr[0]}, ${colorsArr[1]}, ${colorsArr[2]}`);
+      $("body").css("background", `rgb(${colors[0]}, ${colors[1]}, ${colors[2]}`);
     }
 
     $("img").on("click", removeImg);
 
     /** removeImg() removes the image
     */
-    function removeImg(){
-      $("img").remove();
+    function removeImg(evt) {
+      const targetImg = evt.target;
+      targetImg.remove();
     }
 
   </script>
